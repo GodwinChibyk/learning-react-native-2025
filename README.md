@@ -1,50 +1,27 @@
-# Welcome to your Expo app 👋
+### STEPS THAT I USE TO DEBUG THE ERROR
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+1. Install the bun package manager on your vscode.
 
-## Get started
+2. Delete the node_modules folder from your project.
 
-1. Install dependencies
+3. Delete package.lock.json file from your project.
 
-   ```bash
-   npm install
-   ```
+4. Delete the Expo router from your project.
 
-2. Start the app
+5. Create a new file in the project root folder named "babel.config.js".
 
-   ```bash
-   npx expo start
-   ```
+### NOW ADD THIS CODE TO THE babel.config.js FILE
 
-In the output, you'll find options to open the app in a
+      module.exports = function (api) {
+      api.cache(true);
+      return {
+         presets: ['babel-preset-expo'],
+         plugins: ['expo-router/babel'],
+      };
+   };
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+6. In your Package.json, check inside the scripts objects and change the "dev" to "start".
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+7. clear the terminal 
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+8. Now, Run "bun run start" in your terminal.
