@@ -1,26 +1,14 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from "react";
+import { Text, View } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 const settingsScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>settingsScreen</Text>
+    <View className="flex-1 justify-center items-center">
+      <AntDesign name="setting" size={24} color="white" />
+      <Text className="text-2xl font-bold text-white">settings Screen</Text>
     </View>
-  )
-}
+  );
+};
 
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white',
-    },
-})
-
-export default settingsScreen
+export default settingsScreen;
