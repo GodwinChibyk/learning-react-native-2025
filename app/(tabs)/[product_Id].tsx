@@ -1,14 +1,19 @@
 import { products } from "@/base/mockData/products";
+import { IconSymbol } from "@/components/ui/icon-symbol";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Image } from "expo-image";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const ProductScreen = () => {
   const { top } = useSafeAreaInsets();
   const { product_Id } = useLocalSearchParams();
   const item = products.find((item) => item.id === Number(product_Id));
+  const colorScheme = useColorScheme();
+
+  const { back, push } = useRouter();
 
   if (!item) {
     return (
@@ -24,9 +29,18 @@ const ProductScreen = () => {
       className="flex-1"
       style={{ paddingTop: top + 10, paddingHorizontal: 16 }}
     >
-      <Text className="text-2xl font-bold text-black dark:text-white text-center">
-        Product Details
-      </Text>
+      <View className="flex-row items-center gap-x-5">
+        <Pressable onPress={() => back()}>
+          <IconSymbol
+            name="chevron.left"
+            size={28}
+            color={colorScheme === "dark" ? "white" : "black"}
+          />
+        </Pressable>
+        <Text className="text-2xl font-bold text-black dark:text-white text-center">
+          Product Details
+        </Text>
+      </View>
 
       <View className="pb-8 mt-8">
         <Image
@@ -45,6 +59,12 @@ const ProductScreen = () => {
           {item.description}
         </Text>
       </View>
+
+      <Pressable onPress={() => push("/viewPrice")}>
+        <Text className="text-sm text-blue-500 dark:text-blue-400">
+          View Price
+        </Text>
+      </Pressable>
     </View>
   );
 };
