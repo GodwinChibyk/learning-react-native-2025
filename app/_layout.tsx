@@ -31,6 +31,14 @@ export default function RootLayout() {
             name="auth"
             options={{ headerShown: false, animation: "fade" }}
           />
+          <Stack.Screen
+            name="viewPrice/priceUpdate/index"
+            options={{ headerShown: false, animation: "fade" }}
+          />
+          <Stack.Screen
+            name="viewPrice/index"
+            options={{ headerShown: false, animation: "fade" }}
+          />
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>
