@@ -28,7 +28,7 @@ export default function RootLayout() {
             options={{ presentation: "modal", title: "Modal" }}
           />
           <Stack.Screen
-            name="auth"
+            name="index"
             options={{ headerShown: false, animation: "fade" }}
           />
           <Stack.Screen
