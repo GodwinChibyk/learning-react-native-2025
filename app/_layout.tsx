@@ -13,6 +13,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { MagicModalPortal } from "react-native-magic-modal";
 
 export const unstable_settings = {
   anchor: "(tabs)",
@@ -50,6 +51,7 @@ export default function RootLayout() {
               />
             </Stack>
             <StatusBar style="auto" />
+            <MagicModalPortal />
           </ThemeProvider>
         </SafeAreaProvider>
       </GestureHandlerRootView>
