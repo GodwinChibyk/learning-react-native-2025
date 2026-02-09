@@ -11,8 +11,11 @@ import "../global.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { SheetProvider } from "react-native-actions-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { MagicModalPortal } from "react-native-magic-modal";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Sheets } from '@/components/ui/actionSheets/sheets';
 
 export const unstable_settings = {
   anchor: "(tabs)",
@@ -30,26 +33,30 @@ export default function RootLayout() {
           <ThemeProvider
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
           >
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen
-                name="modal"
-                options={{ presentation: "modal", title: "Modal" }}
-              />
-              <Stack.Screen
-                name="index"
-                options={{ headerShown: false, animation: "fade" }}
-              />
-              <Stack.Screen
-                name="viewPrice/priceUpdate/index"
-                options={{ headerShown: false, animation: "fade" }}
-              />
-              <Stack.Screen
-                name="viewPrice/index"
-                options={{ headerShown: false, animation: "fade" }}
-              />
-            </Stack>
-            <StatusBar style="auto" />
+            <SheetProvider>
+              <Stack>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen
+                  name="modal"
+                  options={{ presentation: "modal", title: "Modal" }}
+                />
+                <Stack.Screen
+                  name="index"
+                  options={{ headerShown: false, animation: "fade" }}
+                />
+                <Stack.Screen
+                  name="viewPrice/priceUpdate/index"
+                  options={{ headerShown: false, animation: "fade" }}
+                />
+                <Stack.Screen
+                  name="viewPrice/index"
+                  options={{ headerShown: false, animation: "fade" }}
+                />
+              </Stack>
+              <StatusBar style="auto" />
+              <Sheets />
+            </SheetProvider>
+            <MagicModalPortal />
           </ThemeProvider>
         </SafeAreaProvider>
       </GestureHandlerRootView>
