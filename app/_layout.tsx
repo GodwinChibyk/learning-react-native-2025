@@ -16,6 +16,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { MagicModalPortal } from "react-native-magic-modal";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Sheets } from '@/components/ui/actionSheets/sheets';
+import { ToastMessage } from "@/components/ui/tostMessage/ToastMessage";
 
 export const unstable_settings = {
   anchor: "(tabs)",
@@ -57,6 +58,7 @@ export default function RootLayout() {
               <Sheets />
             </SheetProvider>
             <MagicModalPortal />
+            <ToastMessage />
           </ThemeProvider>
         </SafeAreaProvider>
       </GestureHandlerRootView>
